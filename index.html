@@ -11,6 +11,8 @@
 <input id="text" type="text" value="http://jindo.dev.naver.com/collie" style="width:80%" /><br />
 <div id="qrcode" style="width:100px; height:100px; margin-top:15px;"></div>
 
+<img id="qrcode_img">
+
 <script type="text/javascript">
 var qrcode = new QRCode(document.getElementById("qrcode"), {
 	width : 100,
@@ -38,6 +40,12 @@ $("#text").
 	on("keydown", function (e) {
 		if (e.keyCode == 13) {
 			makeCode();
+			var st=$('#qrcode').find('img').attr('src');
+			var st1=st.replace('data:image/png;base64,','');
+			console.log(st1);
+			var qrimg=$('#qrcode_img');
+			qrimg.attr('src','data:image/png;base64,'+st1);
+
 		}
 	});
 </script>
